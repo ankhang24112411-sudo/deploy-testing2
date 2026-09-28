@@ -23,9 +23,13 @@ public class FakerUtils {
     int[] digit = {0,1,2,3,4,5,6,7,8,9};
     String[] headerphone = {"031", "032", "033", "035", "037", "039", "071", "072", "073", "075", "077", "090", "096", "095", "091", "099", "062", "063", "064", "067"};
     String[] detailemail = {"@yahoo.com", "@gmail.com", "@fpt.edu.vn", "@io.com", "@outlook.com", "@zoho.com", "@edu.com.vn"};
-    final String user = "sa";
-    final String password = "0907718993";
-    final String url = "jdbc:sqlserver://localhost:1433;databaseName=fastshop";
+    final String user = System.getenv().getOrDefault("DB_USERNAME", "sa");
+    final String password = System.getenv().getOrDefault("DB_PASSWORD", "Fastshop@12345");
+    final String url = System.getenv().getOrDefault(
+            "SPRING_DATASOURCE_URL",
+            "jdbc:sqlserver://" + System.getenv().getOrDefault("DB_HOST", "db")
+                    + ":1433;databaseName=" + System.getenv().getOrDefault("DB_NAME", "Fastshop")
+                    + ";encrypt=true;trustServerCertificate=true;sslProtocol=TLSv1.2;");
     
     // -----------------------------------------------------------------------------
     static int number = 500;

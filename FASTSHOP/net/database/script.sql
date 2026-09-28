@@ -2768,9 +2768,9 @@ INSERT [dbo].[discounts] ([id], [date_from], [date_end], [free], [dolar], [numbe
 GO
 SET IDENTITY_INSERT [dbo].[histories] ON 
 GO
-INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (3, N'http://localhost:8080/files/Bao cao doanh thu tung san pham.pdf', CAST(N'2022-12-03T13:34:51.547' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 03/12/2022', N'anAP073', 1)
+INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (3, N'/files/Bao cao doanh thu tung san pham.pdf', CAST(N'2022-12-03T13:34:51.547' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 03/12/2022', N'anAP073', 1)
 GO
-INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (4, N'http://localhost:8080/files/Bao cao ton kho.pdf', CAST(N'2022-12-03T17:24:22.907' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 03/12/2022', N'anAP073', 1)
+INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (4, N'/files/Bao cao ton kho.pdf', CAST(N'2022-12-03T17:24:22.907' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 03/12/2022', N'anAP073', 1)
 GO
 INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (5, NULL, CAST(N'2022-12-04T11:02:42.153' AS DateTime), N'Bạn đã thay đổi trạng thái nhân viên Ông Trùng Vân thành Dừng làm việc', N'khannit159', 1)
 GO
@@ -2778,13 +2778,13 @@ INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status
 GO
 INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (8, NULL, CAST(N'2022-12-04T11:59:07.503' AS DateTime), N'Bạn đã thay đổi trạng thái nhân viên nguyen van kkkk thành Dừng làm việc', N'khannit159', 1)
 GO
-INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (9, N'http://localhost:8080/files/4122022.Bao cao luong nhan vien.pdf', CAST(N'2022-12-04T13:21:06.587' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 04/12/2022', N'anAP073', 1)
+INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (9, N'/files/4122022.Bao cao luong nhan vien.pdf', CAST(N'2022-12-04T13:21:06.587' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 04/12/2022', N'anAP073', 1)
 GO
 INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (10, NULL, CAST(N'2022-12-10T10:51:25.663' AS DateTime), N'Bạn đã thay đổi trạng thái nhân viên Ông Trùng Vân thành Dừng làm việc', N'khannit159', 1)
 GO
 INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (11, NULL, CAST(N'2022-12-10T10:55:39.903' AS DateTime), N'Bạn đã thay đổi trạng thái nhân viên Ông Trùng Vân thành Đang làm việc', N'khannit159', 1)
 GO
-INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (12, N'http://localhost:8080/files/nguyen ngoc kha''s Notebook.url', CAST(N'2022-12-10T10:56:34.423' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 10/12/2022', N'anAP073', 1)
+INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (12, N'/files/nguyen ngoc kha''s Notebook.url', CAST(N'2022-12-10T10:56:34.423' AS DateTime), N'Nhân viên Huỳnh Thị Tâm đã gửi báo cáo 10/12/2022', N'anAP073', 1)
 GO
 INSERT [dbo].[histories] ([id], [link], [schedual], [title], [username], [status]) VALUES (13, NULL, CAST(N'2022-12-21T11:46:11.557' AS DateTime), N'Bạn đã thay đổi trạng thái nhân viên Ông Trùng Vân thành Dừng làm việc', N'khannit159', 1)
 GO

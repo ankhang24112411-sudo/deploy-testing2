@@ -55,7 +55,7 @@ public class ForgorController {
                     mailService.send(
                         email, 
                         "Xác nhận tài khoản của bạn",
-                        "<a href='http://localhost:8080/ChangeForgot'><button class='btn btn-primary'>Nhấn xác nhận</button></a>"
+                        "<a href='/ChangeForgot'><button class='btn btn-primary'>Nhấn xác nhận</button></a>"
                     );
                 }
                 return "success/success";

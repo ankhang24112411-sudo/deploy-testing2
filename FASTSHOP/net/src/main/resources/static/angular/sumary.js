@@ -1,4 +1,4 @@
-var host_ = "http://localhost:8080/rest";
+var host_ = "/rest";
 var number = document.getElementById("number");       // _mode_cart.html
 var username = document.getElementById("username");   
 var account_ = document.getElementById("username_");  // _account.html
@@ -302,7 +302,7 @@ app.controller("atm-ctrl", ($scope, $http) => {
             setInterval(() => {
                 $http.post(url_c, $scope.atm).then((resp) => {
                     $("#load-page").css("display", "none");
-                    window.location.href = "http://localhost:8080/user/wallet";
+                    window.location.href = "/user/wallet";
                 }).catch((err) => {});
             }, 3000);
         }
@@ -607,7 +607,7 @@ app.controller("checkout-ctrl", ($scope, $http) => {
             }).catch((err) => {
                 console.log("notify failed", err);
             });
-            window.location.href = "http://localhost:8080/fastshop.com";
+            window.location.href = "/fastshop.com";
         }
     }
 });
@@ -727,7 +727,7 @@ app.controller("product-ctrl", ($scope, $http) => {
         }).catch((err) => {
             console.log("Error", err);
         });
-        window.location.href = "http://localhost:8080/staff/products";
+        window.location.href = "/staff/products";
     };
 
     $scope.delete = (id) => {
@@ -740,7 +740,7 @@ app.controller("product-ctrl", ($scope, $http) => {
         }).catch((err) => {
             console.log("error", err);
         });
-        window.location.href = "http://localhost:8080/staff/products";
+        window.location.href = "/staff/products";
     };
 });
 
@@ -822,7 +822,7 @@ app.controller("keyword-ctrl", ($scope, $http) => {
                 localStorage.setItem("keywords", JSON.stringify($scope.keywords));
 
                 // go head a any page with URL + kw
-                window.location.href = "http://localhost:8080/user/search?keyword=" +$scope.keysearch; 
+                window.location.href = "/user/search?keyword=" +$scope.keysearch; 
             }
        });
     };
@@ -874,7 +874,7 @@ app.controller("keyword-ctrl", ($scope, $http) => {
         var cateId = String($scope.map_filter["cateId"]);
         var priceFrom = Number($scope.map_filter["priceFrom"]);
         var priceTo = Number($scope.map_filter["priceTo"]);
-        var url = `http://localhost:8080/user/filter?rate=${rate}&cateId=${cateId}&priceFrom=${priceFrom}&priceTo=${priceTo}`;
+        var url = `/user/filter?rate=${rate}&cateId=${cateId}&priceFrom=${priceFrom}&priceTo=${priceTo}`;
         window.location.href = url;
     };
 
@@ -963,7 +963,7 @@ app.controller("comment-ctrl", ($scope, $http) => {
 
             $http.post(url, item).then((resp) => {
                     localStorage.removeItem("rate");
-                    window.location.href = 'http://localhost:8080/user/detail/' + productid;
+                    window.location.href = '/user/detail/' + productid;
                 })
                 .catch((err) => {
                     result = false;
@@ -1011,7 +1011,7 @@ app.controller("detail-staff", ($scope, $http) => {
                 });
             }
         });
-        window.location.href = "http://localhost:8080/staff/detail/" + productId; 
+        window.location.href = "/staff/detail/" + productId; 
     };
 
 
@@ -1034,7 +1034,7 @@ app.controller("detail-staff", ($scope, $http) => {
                 });
             }
         });
-        window.location.href = "http://localhost:8080/staff/detail/" + productId; 
+        window.location.href = "/staff/detail/" + productId; 
     };
 });
 
@@ -1102,7 +1102,7 @@ app.controller("discount-ctrl", ($scope, $http) => {
             }).catch((err) => {
                 console.log("Fail dscount", err);
             });
-            window.location.href = "http://localhost:8080/staff/discount";
+            window.location.href = "/staff/discount";
         }
     };
     
@@ -1146,7 +1146,7 @@ app.controller("mode-cart-ctrl", ($scope, $http) => {
         setTimeout(() => {
             $http.put(url_id).then(() => {
                 if (window.location.href.includes("admin")) {
-                    window.location.href = "http://localhost:8080/admin/history";
+                    window.location.href = "/admin/history";
                 }
                 else if (window.location.href.includes("staff")) {
                     window.location.href = window.location.href;

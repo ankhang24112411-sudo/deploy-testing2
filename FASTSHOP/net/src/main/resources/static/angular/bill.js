@@ -1,4 +1,4 @@
-var host_ = "http://localhost:8080/rest";
+var host_ = "/rest";
 var account_ = document.getElementById("username_");  // _account.html
 
 var id = account_.innerHTML;

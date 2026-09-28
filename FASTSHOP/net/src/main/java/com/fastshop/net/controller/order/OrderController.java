@@ -6,10 +6,13 @@ import org.springframework.ui.Model;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fastshop.net.model.Account;
 import com.fastshop.net.model.Authority;
@@ -60,11 +63,15 @@ public class OrderController {
 
     // gửi gmail loại html
     @RequestMapping("/user/order/accept")
-    public String order(Model model, @ModelAttribute("auth") Authority auth) {
+    public String order(Model model, @ModelAttribute("auth") Authority auth, HttpServletRequest request) {
         try {
             String email = auth.getAccount().getEmail();
             String subject = "Hóa đơn Fastshop của " + auth.getAccount().getFullname() + " (" + java.sql.Date.valueOf(LocalDate.now()).toString() +")";
-            String body = new ReadFile().readFile("http://localhost:8080/user/bill");
+            String billUrl = ServletUriComponentsBuilder.fromRequestUri(request)
+                    .replacePath(request.getContextPath() + "/user/bill")
+                    .replaceQuery(null)
+                    .toUriString();
+            String body = new ReadFile().readFile(billUrl);
             mailService.send(email, subject, body);
             System.out.println();
             System.out.println(body);

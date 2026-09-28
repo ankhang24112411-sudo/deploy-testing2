@@ -164,7 +164,7 @@ public class EmployeeController {
             history.setAccount(auth.getAccount());
             history.setTitle("Nhân viên " + auth.getAccount().getFullname() + " đã gửi báo cáo " + FormatDate.parse());
             history.setSchedual(new Date());
-            history.setLink("http://localhost:8080/files/" + imageUUID);
+            history.setLink("/files/" + imageUUID);
             history.setStatus(true);
             historyService.save(history);
 
