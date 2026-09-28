@@ -12,51 +12,113 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # =========================================================
+      # 1. Setup SSH: GitHub Actions -> Ubuntu Server
+      # =========================================================
       - name: Setup SSH
+        shell: bash
         run: |
-          mkdir -p ~/.ssh
+          set -e
 
-          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/id_ed25519
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          # Decode private key từ Base64
+          echo "${{ secrets.DEPLOY_SSH_KEY_B64 }}" \
+            | base64 --decode \
+            > ~/.ssh/id_ed25519
 
           chmod 600 ~/.ssh/id_ed25519
 
-          cat <<EOF > ~/.ssh/config
+          # Kiểm tra private key có đọc được không
+          ssh-keygen -y -f ~/.ssh/id_ed25519 > /dev/null
+
+          cat > ~/.ssh/config <<EOF
           Host deploy-server
             HostName ${{ secrets.DEPLOY_HOST }}
             User ${{ secrets.DEPLOY_USER }}
             Port ${{ secrets.DEPLOY_PORT }}
             IdentityFile ~/.ssh/id_ed25519
+            IdentitiesOnly yes
             StrictHostKeyChecking no
             ServerAliveInterval 30
             ServerAliveCountMax 20
             ConnectTimeout 30
           EOF
 
+          chmod 600 ~/.ssh/config
+
+      # =========================================================
+      # 2. SSH vào server và deploy
+      # =========================================================
       - name: Deploy to server
+        shell: bash
         run: |
           ssh deploy-server << 'EOF'
             set -e
 
-            echo "===== Go to repository ====="
+            echo "========================================"
+            echo "1. Go to repository"
+            echo "========================================"
+
             cd ~/khang-k6/deploy-testing2/deploy-testing2
 
-            echo "===== Pull latest code ====="
+
+            echo "========================================"
+            echo "2. Pull latest code from main"
+            echo "========================================"
+
             git fetch origin main
             git checkout main
             git reset --hard origin/main
 
-            echo "===== Go to application ====="
+
+            echo "========================================"
+            echo "3. Go to application directory"
+            echo "========================================"
+
             cd FASTSHOP/net
 
-            echo "===== Docker compose config ====="
-            docker compose config
 
-            echo "===== Build and deploy ====="
+            echo "========================================"
+            echo "4. Check environment file"
+            echo "========================================"
+
+            if [ ! -f .env ]; then
+              echo "ERROR: .env file not found"
+              exit 1
+            fi
+
+
+            echo "========================================"
+            echo "5. Validate Docker Compose"
+            echo "========================================"
+
+            docker compose config --quiet
+
+
+            echo "========================================"
+            echo "6. Build and deploy containers"
+            echo "========================================"
+
             docker compose up -d --build
 
-            echo "===== Remove unused images ====="
+
+            echo "========================================"
+            echo "7. Remove unused Docker images"
+            echo "========================================"
+
             docker image prune -f
 
-            echo "===== Container status ====="
+
+            echo "========================================"
+            echo "8. Container status"
+            echo "========================================"
+
             docker compose ps
+
+
+            echo "========================================"
+            echo "DEPLOY COMPLETED"
+            echo "========================================"
           EOF
