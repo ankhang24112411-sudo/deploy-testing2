@@ -97,7 +97,7 @@ jobs:
         uses: actions/checkout@v6
 
         with:
-          repository: ankhang24112411-sudo/fastshop-gitops
+          repository: ankhang24112411-sudo/deploy-testing2-gitops
 
           token: ${{ secrets.GITOPS_TOKEN }}
 
