@@ -9,4 +9,5 @@ public interface ATMService {
     ATM findById(Integer id);
     ATM findByAccount(Account account);
     ATM findByNumber(String number);
+    //NAK
 }
